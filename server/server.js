@@ -23,6 +23,13 @@ app.post('/todos', (request, response) => {
 
 //get example
 // Get /todos/123asdshzt
+app.get('/todos', (request, response) => {
+  Todo.find().then((todos) => {
+    response.send({todos})
+  }, (e) => {
+    response.status(400).send(e);
+  });
+});
 
 app.listen(3000, () => {
   console.log('Started on port 3000');
